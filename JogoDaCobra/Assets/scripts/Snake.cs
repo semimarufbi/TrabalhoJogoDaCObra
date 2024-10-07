@@ -21,5 +21,9 @@ public class Snake : MonoBehaviour
         float vertical = Input.GetAxisRaw("vertical");
         moveDirection = new Vector2(horizontal, vertical);
     }
-
+    private void FixedUpdate()
+    {
+        Vector3 moveposition = (speed * Time.fixedDeltaTime * moveDirection.normalized) + rb.position;
+        rb.MovePosition(moveposition);
+    }
 }
