@@ -27,5 +27,10 @@ public class GameManager : MonoBehaviour
     {
         grade = new int[diametroDoCampo,diametroDoCampo];
     }
+    public void CameraSeguidora()
+    {
+        Camera.main.transform.position = new Vector3(diametroDoCampo / 2f - 0.5f, diametroDoCampo / 2f - 0.5f, -10);
+        Camera.main.orthographicSize = diametroDoCampo / 2f;
+    }
     
 }
