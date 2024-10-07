@@ -32,10 +32,9 @@ public class GameManager : MonoBehaviour
         Camera.main.transform.position = new Vector3(diametroDoCampo / 2f - 0.5f, diametroDoCampo / 2f - 0.5f, -10);
         Camera.main.orthographicSize = diametroDoCampo / 2f;
     }
-    public void DefinirDIametro()
+    public void DefinirDIametro(string value)
     {
-        diametroDoCampo= int.pra
-
+        diametroDoCampo = int.Parse(value);
     }
     
 }
