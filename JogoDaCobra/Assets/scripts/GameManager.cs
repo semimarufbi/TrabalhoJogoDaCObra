@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
         gameover = GameObject.Find("GameOverPanel");
         GerarGrade();
     }
-
+    public void GerarGrade()
+    {
+        grade = new int[diametroDoCampo,diametroDoCampo];
+    }
     
 }
