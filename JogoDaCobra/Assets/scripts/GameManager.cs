@@ -36,5 +36,9 @@ public class GameManager : MonoBehaviour
     {
         diametroDoCampo = int.Parse(value);
     }
+    public void DefinirVelocidade(string value)
+    {
+        GameObject.Find("snake").GetComponent<Snake>().speed = float.Parse(value);
+    }
     
 }
