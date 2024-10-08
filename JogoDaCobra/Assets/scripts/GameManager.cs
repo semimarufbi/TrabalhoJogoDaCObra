@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     #endregion
     public int diametroDoCampo;
     public int[,] grade;
-    UImanager managerUI;
+    UIManager managerUI;
     GameObject menu, gameover;
     // Start is called before the first frame update
     void Start()
     {
-        managerUI = GetComponent<UImanager>();
+        managerUI = GetComponent<UIManager>();
         menu = GameObject.Find("menu");
         gameover = GameObject.Find("GameOverPanel");
         GerarGrade();

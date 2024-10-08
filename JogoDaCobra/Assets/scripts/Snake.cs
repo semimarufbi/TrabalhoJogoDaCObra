@@ -17,8 +17,8 @@ public class Snake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxisRaw("horizontal");
-        float vertical = Input.GetAxisRaw("vertical");
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
         moveDirection = new Vector2(horizontal, vertical);
     }
     private void FixedUpdate()

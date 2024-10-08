@@ -17,6 +17,7 @@ public class camerainfinita : MonoBehaviour
     {
         // Obtenha as coordenadas da posição do player em relação à câmera (em coordenadas de viewport)
         Vector3 viewportPosition = mainCamera.WorldToViewportPoint(transform.position);
+        
         //verifica se o player saiu da tela
         if(viewportPosition.x > 1) // saiu pela direita
         {
@@ -37,6 +38,6 @@ public class camerainfinita : MonoBehaviour
         }
         
         //atualiza a posição do player com as novas coordenadas de viewpoint
-        transform.position = mainCamera.ViewportToScreenPoint(viewportPosition);
+        transform.position = mainCamera.ViewportToWorldPoint(viewportPosition);
     }
 }
