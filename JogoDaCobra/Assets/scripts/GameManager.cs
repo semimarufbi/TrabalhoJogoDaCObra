@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         
         Vector2 spawnPosition = new Vector2(randomX,randomY);
         
-      if(randomX > diametroDoCampo /-2 && randomX < diametroDoCampo / 2 && randomY > diametroDoCampo / -2 && randomY < diametroDoCampo / 2) 
+      if(randomX > valordacamera.x  && randomX < valordacamera.x  && randomY > valordacamera.y  && randomY < valordacamera.y ) 
         {
             spawnedFood = Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
         }
