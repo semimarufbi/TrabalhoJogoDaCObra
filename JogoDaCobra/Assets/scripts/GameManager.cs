@@ -5,16 +5,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     #region
-    GameManager instnce;
+    public static GameManager instance;
     private void Awake()
     {
-        instnce = this;
+        instance = this;
     }
     #endregion
     public int diametroDoCampo;
     public int[,] grade;
     UIManager managerUI;
     GameObject menu, gameover;
+    public GameObject foodPrefab;
+    private GameObject spawnedFood;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
     public void GerarGrade()
     {
         grade = new int[diametroDoCampo,diametroDoCampo];
+        CameraSeguidora();
     }
     public void CameraSeguidora()
     {
@@ -39,6 +42,34 @@ public class GameManager : MonoBehaviour
     public void DefinirVelocidade(string value)
     {
         GameObject.Find("snake").GetComponent<Snake>().speed = float.Parse(value);
+    }
+    public void SpawnFood()
+    {
+        
+        if (spawnedFood != null)
+        {
+            Destroy(spawnedFood);
+        }
+        int randomX = Random.Range(0,diametroDoCampo);
+        int randomY = Random.Range(0, diametroDoCampo);
+        
+        Vector2 spawnPosition = new Vector2(randomX,randomY);
+        
+      if(randomX > diametroDoCampo /-2 && randomX < diametroDoCampo / 2 && randomY > diametroDoCampo / -2 && randomY < diametroDoCampo / 2) 
+        {
+            spawnedFood = Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            SpawnFood();
+        }
+      
+
+       
+    }
+    public void OnFoodCollected()
+    {
+        SpawnFood();
     }
     
 }
