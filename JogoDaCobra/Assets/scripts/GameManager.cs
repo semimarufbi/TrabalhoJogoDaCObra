@@ -17,13 +17,15 @@ public class GameManager : MonoBehaviour
     GameObject menu, gameover;
     public GameObject foodPrefab;
     private GameObject spawnedFood;
+    Camera possicaoinicial;
+    Vector3 valordacamera;
     // Start is called before the first frame update
     void Start()
     {
         managerUI = GetComponent<UIManager>();
         menu = GameObject.Find("menu");
         gameover = GameObject.Find("GameOverPanel");
-        GerarGrade();
+      
     }
     public void GerarGrade()
     {
@@ -34,6 +36,12 @@ public class GameManager : MonoBehaviour
     {
         Camera.main.transform.position = new Vector3(diametroDoCampo / 2f - 0.5f, diametroDoCampo / 2f - 0.5f, -10);
         Camera.main.orthographicSize = diametroDoCampo / 2f;
+        
+    }
+    public void calculocamera()
+    {
+       valordacamera = possicaoinicial.ScreenToWorldPoint(new Vector3(Screen.width,Screen.height));
+
     }
     public void DefinirDIametro(string value)
     {
@@ -50,8 +58,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(spawnedFood);
         }
-        int randomX = Random.Range(0,diametroDoCampo);
-        int randomY = Random.Range(0, diametroDoCampo);
+        int randomX = Random.Range(diametroDoCampo/-2,diametroDoCampo/2);
+        int randomY = Random.Range(diametroDoCampo/-2, diametroDoCampo/2);
         
         Vector2 spawnPosition = new Vector2(randomX,randomY);
         
