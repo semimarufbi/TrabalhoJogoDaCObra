@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private GameObject spawnedFood;
     Camera possicaoinicial;
     public Vector3 valordacamera;
+    public GameObject gameOverPanel; // Referência ao painel de Game Over
     // Start is called before the first frame update
     void Start()
     {
@@ -79,7 +80,15 @@ public class GameManager : MonoBehaviour
         SpawnFood();
     }
 
-   
+
+    public void TriggerGameOver()
+    {
+        // Ativa o painel de Game Over
+        gameOverPanel.SetActive(true);
+
+        // Opcional: Pausar o jogo
+        Time.timeScale = 0;
+    }
 
 
 
