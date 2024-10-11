@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject foodPrefab;
     private GameObject spawnedFood;
     Camera possicaoinicial;
-    Vector3 valordacamera;
+    public Vector3 valordacamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
        valordacamera = possicaoinicial.ScreenToWorldPoint(new Vector3(Screen.width,Screen.height));
 
     }
-    public void DefinirDIametro(string value)
+    public void DefinirDiametro(string value)
     {
         diametroDoCampo = int.Parse(value);
     }
@@ -53,29 +53,28 @@ public class GameManager : MonoBehaviour
     }
     public void SpawnFood()
     {
+
+
         
-        if (spawnedFood != null)
         {
-            Destroy(spawnedFood);
-        }
-        int randomX = Random.Range(diametroDoCampo/-2,diametroDoCampo/2);
-        int randomY = Random.Range(diametroDoCampo/-2, diametroDoCampo/2);
-        
-        Vector2 spawnPosition = new Vector2(randomX,randomY);
-        
-      if(randomX > valordacamera.x  && randomX < valordacamera.x  && randomY > valordacamera.y  && randomY < valordacamera.y ) 
-        {
+            // Se já houver uma comida gerada, destrói antes de criar uma nova
+            if (spawnedFood != null)
+            {
+                Destroy(spawnedFood);
+            }
+
+            // Gera uma posição aleatória dentro dos limites do campo de jogo
+            int randomX = Random.Range(0, diametroDoCampo);
+            int randomY = Random.Range(0, diametroDoCampo);
+
+            // Ajusta a posição para o centro do campo de jogo
+            Vector2 spawnPosition = new Vector2(randomX - valordacamera.x, randomY - valordacamera.y);
+
+            // Instancia a comida na nova posição
             spawnedFood = Instantiate(foodPrefab, spawnPosition, Quaternion.identity);
         }
-        else
-        {
-            SpawnFood();
-        }
-      
-
-       
     }
-    public void OnFoodCollected()
+ public void OnFoodCollected()
     {
         SpawnFood();
     }
