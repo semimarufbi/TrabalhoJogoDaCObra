@@ -79,47 +79,7 @@ public class GameManager : MonoBehaviour
         SpawnFood();
     }
 
-    private void LimitPlayerPosition()
-    {
-        Vector3 playerPosition = transform.position;
-
-        // Calcula os limites do campo usando valordacamera
-        float halfFieldWidth = GameManager.instance.valordacamera.x;  // Largura do campo
-        float halfFieldHeight = GameManager.instance.valordacamera.y; // Altura do campo
-
-        // Limite para a posição X
-        if (playerPosition.x > halfFieldWidth)
-        {
-            playerPosition.x = halfFieldWidth; // Limita ao máximo
-        }
-        else if (playerPosition.x < -halfFieldWidth)
-        {
-            playerPosition.x = -halfFieldWidth; // Limita ao mínimo
-        }
-
-        // Limite para a posição Y
-        if (playerPosition.y > halfFieldHeight)
-        {
-            playerPosition.y = halfFieldHeight; // Limita ao máximo
-        }
-        else if (playerPosition.y < -halfFieldHeight)
-        {
-            playerPosition.y = -halfFieldHeight; // Limita ao mínimo
-        }
-
-        // Atualiza a posição do jogador
-        transform.position = playerPosition;
-    }
-    private void Update()
-    {
-        // Primeiro, atualize a posição do jogador conforme o movimento
-        Vector3 playerPosition = transform.position;
-
-        // Aqui você pode adicionar a lógica de movimento da cobra...
-
-        // Chame o método para limitar a posição do jogador
-        LimitPlayerPosition();
-    }
+   
 
 
 
