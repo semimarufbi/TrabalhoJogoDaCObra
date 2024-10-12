@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Snake : MonoBehaviour
@@ -18,8 +19,15 @@ public class Snake : MonoBehaviour
             direction = Vector2.up * yAxis;
         }
     }
+    private void FixedUpdate()
+    {
+        MoverCobra();
+    }
     public void MoverCobra()
     {
-
+        float arrendondarX = Mathf.Round(transform.position.x);
+        float arrendondarY = Mathf.Round(transform.position.y);
+        transform.position = new Vector2(arrendondarX + direction.x, arrendondarY + direction.y);
     }
+  
 }
