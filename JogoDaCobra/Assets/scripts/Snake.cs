@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    [SerializeField]
-    public float speed;
-    private Rigidbody2D rb;
-    private Vector2 moveDirection;
-    private void Awake()
+    [SerializeField] Vector2 direction;
+    private void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
+        float xAxis = Input.GetAxis("Horizontal");
+        float yAxis = Input.GetAxis("Vertical");
+        if (xAxis != 0)
+        {
+            direction = Vector2.right * xAxis;
+        }
+        if (yAxis != 0)
+        {
+            direction = Vector2.up * yAxis;
+        }
     }
-   
+    public void MoverCobra()
+    {
 
-    // Update is called once per frame
-    void Update()
-    {
-        float horizontal = Input.GetAxisRaw("horizontal");
-        float vertical = Input.GetAxisRaw("vertical");
-        moveDirection = new Vector2(horizontal, vertical);
-    }
-    private void FixedUpdate()
-    {
-        Vector3 moveposition = (speed * Time.fixedDeltaTime * moveDirection.normalized) + rb.position;
-        rb.MovePosition(moveposition);
     }
 }
