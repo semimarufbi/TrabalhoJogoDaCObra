@@ -1,15 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
+
     [SerializeField] public float speed;
     [SerializeField] Vector2 direction;
     [SerializeField] List<Transform> snakeBodies;
     [SerializeField] Transform body;
     private void Update()
+
+   
+
+    // Lista para armazenar os segmentos da cobra
+
+  
+
     {
         float xAxis = Input.GetAxis("Horizontal");
         float yAxis = Input.GetAxis("Vertical");
@@ -22,6 +29,7 @@ public class Snake : MonoBehaviour
             direction = Vector2.up * yAxis;
         }
     }
+
     private void FixedUpdate()
     {
         MoverCobra();
@@ -41,6 +49,7 @@ public class Snake : MonoBehaviour
         Transform SpawnBOdy = Instantiate(body, snakeBodies[snakeBodies.Count - 1].position, quaternion.identity);
         snakeBodies.Add(SpawnBOdy);
 
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -52,3 +61,8 @@ public class Snake : MonoBehaviour
     }
 
 }
+    
+        
+
+    
+
