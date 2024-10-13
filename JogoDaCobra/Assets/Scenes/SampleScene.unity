@@ -364,7 +364,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+
+ 
+
   m_fontSize: 45.65
+
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -498,7 +502,9 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+
   m_fontSize: 53.85
+
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -768,7 +774,9 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+
   m_fontSize: 39.1
+
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1814,9 +1822,11 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
+
       - m_Target: {fileID: 1801388464}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: DefinirVelocidade
+
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2310,9 +2320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dfd92ef8687d9f44aa06f4f85520136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   speed: 0
   corpoDaCobra: []
   coropo: {fileID: 4915876830612129700, guid: 63fb2361ff5db094280b19230671188e, type: 3}
+
 --- !u!212 &1428979115
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2362,7 +2374,9 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1.0044643}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+
   m_WasSpriteAssigned: 1
+
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1428979116
@@ -2638,7 +2652,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diametroDoCampo: 0
-  foodPrefab: {fileID: 7687283740391720359, guid: 4fb96edffd6de9d43b1765a5812dee58, type: 3}
+
+  
   valordacamera: {x: 0, y: 0, z: 0}
   gameOverPanel: {fileID: 0}
 --- !u!4 &1801388465

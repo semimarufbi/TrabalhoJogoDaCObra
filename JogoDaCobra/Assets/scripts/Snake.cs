@@ -1,78 +1,65 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    [SerializeField]
-    public float speed;
-    private Rigidbody2D rb;
-    private Vector2 moveDirection;
-    [SerializeField] List<Transform> corpoDaCobra;
-    [SerializeField] Transform coropo;
+
+    [SerializeField] public float speed;
+    [SerializeField] Vector2 direction;
+    [SerializeField] List<Transform> snakeBodies;
+    [SerializeField] Transform body;
+    private void Update()
+
+   
 
     // Lista para armazenar os segmentos da cobra
 
-    private void Awake()
+  
+
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Start()
-    {
-        // Inicializa a lista com o transform da própria cobra (cabeça)
-        corpoDaCobra = new List<Transform>();
-        corpoDaCobra.Add(transform);
-    }
-
-    void Update()
-    {
-        // Lógica de movimento
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        // Não permite mover em diagonal
-        if (horizontal != 0)
-            vertical = 0;
-
-        moveDirection = new Vector2(horizontal, vertical).normalized;
+        float xAxis = Input.GetAxis("Horizontal");
+        float yAxis = Input.GetAxis("Vertical");
+        if (xAxis != 0)
+        {
+            direction = Vector2.right * xAxis;
+        }
+        if (yAxis != 0)
+        {
+            direction = Vector2.up * yAxis;
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
-        for (int i = corpoDaCobra.Count - 1; i > 0; i--)
+        MoverCobra();
+        for (int i = snakeBodies.Count - 1; i > 0; i--)
         {
-            corpoDaCobra[i].position = corpoDaCobra[i - 1].position;
+            snakeBodies[i].position = snakeBodies[i - 1].position;
         }
+    }
+    public void MoverCobra()
+    {
+        float arrendondarX = Mathf.Round(transform.position.x);
+        float arrendondarY = Mathf.Round(transform.position.y);
+        transform.position = new Vector2(arrendondarX + direction.x, arrendondarY + direction.y);
+    }
+    public void Grow()
+    {
+        Transform SpawnBOdy = Instantiate(body, snakeBodies[snakeBodies.Count - 1].position, quaternion.identity);
+        snakeBodies.Add(SpawnBOdy);
+
 
     }
-    private void Move()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Armazena a posição atual da cabeça antes de mover
-        Vector3 previousPosition = transform.position;
-
-        // Move a cobra
-        Vector3 newPosition = (speed * Time.fixedDeltaTime * moveDirection.normalized) + rb.position;
-        rb.MovePosition(newPosition);
-    }
-
-
-
-        private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Food"))
+        if (collision.CompareTag("Player"))
         {
-            GameManager.instance.OnFoodCollected();
             Grow();
-            Destroy(collision.gameObject);
+        }
 
-        }
-        void Grow()
-        {
-            Transform novoCorpo = Instantiate(coropo, corpoDaCobra[corpoDaCobra.Count - 1].position, Quaternion.identity);
-            corpoDaCobra.Add(novoCorpo);
-        }
     }
+
 }
     
         
