@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
+    [SerializeField] public float speed;
     [SerializeField] Vector2 direction;
     [SerializeField] List<Transform> snakeBodies;
     [SerializeField] Transform body;
