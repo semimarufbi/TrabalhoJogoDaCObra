@@ -25,6 +25,10 @@ public class Snake : MonoBehaviour
     private void FixedUpdate()
     {
         MoverCobra();
+        for (int i = snakeBodies.Count - 1; i > 0; i--)
+        {
+            snakeBodies[i].position = snakeBodies[i - 1].position;
+        }
     }
     public void MoverCobra()
     {
@@ -34,9 +38,9 @@ public class Snake : MonoBehaviour
     }
     public void Grow()
     {
-        Transform SpawnBOdy = Instantiate(body, snakeBodies[snakeBodies.Count - 1].position,quaternion.identity);
+        Transform SpawnBOdy = Instantiate(body, snakeBodies[snakeBodies.Count - 1].position, quaternion.identity);
         snakeBodies.Add(SpawnBOdy);
-        
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
